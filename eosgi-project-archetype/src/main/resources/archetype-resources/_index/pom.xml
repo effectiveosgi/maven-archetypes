@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>${artifactId}</artifactId>
+  <packaging>pom</packaging>
+
+  <dependencies>
+    <!-- Distribution Dependency -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>_distro</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+      <type>pom</type>
+    </dependency>
+
+    <!-- Workspace Dependencies -->
+    <!-- TODO: reference your workspace projects to be indexed here -->
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-indexer-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

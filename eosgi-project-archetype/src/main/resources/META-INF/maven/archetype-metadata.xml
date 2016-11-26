@@ -1,0 +1,36 @@
+<archetype-descriptor
+  xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+  name="eosgi-project-archetype">
+
+  <modules>
+    <module name="_distro" id="_distro" dir="_distro">
+      <fileSets>
+        <fileSet>
+          <directory/>
+        </fileSet>
+      </fileSets>
+    </module>
+
+    <module name="_index" id="_index" dir="_index">
+      <fileSets>
+        <fileSet>
+          <directory/>
+        </fileSet>
+      </fileSets>
+    </module>
+
+    <module name="_assembly" id="_assembly" dir="_assembly">
+      <fileSets>
+        <fileSet filtered="false" packaged="false">
+          <directory></directory>
+          <includes>
+            <include>*.bndrun</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+  </modules>
+
+</archetype-descriptor>

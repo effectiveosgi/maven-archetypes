@@ -1,0 +1,20 @@
+-standalone: target/index.xml
+
+-runfw: org.apache.felix.framework;version=5.6
+-runee: JavaSE-1.8
+-runprovidedcapabilities: ${native_capability}
+
+-resolve.effective: active; skip:="osgi.service"
+
+-runrequires: \
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+        osgi.identity;filter:='(osgi.identity=${artifactId})'
+
+-runbundles: \
+        org.apache.felix.gogo.runtime,\
+        org.apache.felix.gogo.command,\
+        org.apache.felix.gogo.shell,\
+        org.apache.felix.bundlerepository,\
+        org.apache.felix.scr,\
+        ${artifactId}

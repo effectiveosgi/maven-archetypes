@@ -1,0 +1,5 @@
+language: java
+script: mvn -B clean verify
+jdk:
+  - oraclejdk7
+  - oraclejdk8
