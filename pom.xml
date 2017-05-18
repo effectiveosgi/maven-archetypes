@@ -157,4 +157,12 @@ limitations under the License.
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>bintray-effectiveosgi-eosgi-maven</id>
+			<name>effectiveosgi-eosgi-maven</name>
+			<url>https://api.bintray.com/maven/effectiveosgi/eosgi-maven/eosgi-maven-archetypes/;publish=1</url>
+		</repository>
+	</distributionManagement>
+
 </project>
