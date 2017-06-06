@@ -36,7 +36,7 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-      <url>https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/maven/target/m2/</url>
+      <url>https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles</url>
     </pluginRepository>
   </pluginRepositories>
 
