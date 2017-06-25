@@ -9,12 +9,13 @@
 -runrequires: \
         osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
         osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
         osgi.identity;filter:='(osgi.identity=${artifactId})'
 
 -runbundles: \
         org.apache.felix.gogo.runtime,\
         org.apache.felix.gogo.command,\
         org.apache.felix.gogo.shell,\
-        org.apache.felix.bundlerepository,\
+        org.apache.felix.log,\
         org.apache.felix.scr,\
         ${artifactId}

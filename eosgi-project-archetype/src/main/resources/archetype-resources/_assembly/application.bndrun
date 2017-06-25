@@ -8,9 +8,11 @@
 
 -runrequires: \
         osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)'
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.log)'
 
 -runbundles: \
         org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
         org.apache.felix.gogo.runtime;version='[1.0.6,1.0.7)',\
-        org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)'
+        org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
+        org.apache.felix.log;version='[1.0.1,1.0.2)'
