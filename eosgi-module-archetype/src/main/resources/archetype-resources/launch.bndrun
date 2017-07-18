@@ -2,6 +2,8 @@
 
 -runfw: org.apache.felix.framework;version=5.6
 -runee: JavaSE-1.8
+## Uncomment below to permit remote debugging on port 7001
+#-runvm: "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=7001"
 -runprovidedcapabilities: ${native_capability}
 
 -resolve.effective: active; skip:="osgi.service"
