@@ -3,12 +3,25 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
   name="eosgi-project-archetype">
+  
+  <fileSets>
+    <fileSet filtered="false" packaged="false">
+      <directory/>
+      <includes>
+        <include>.gitignore</include>
+      </includes>
+    </fileSet>
+  </fileSets>
 
   <modules>
     <module name="_distro" id="_distro" dir="_distro">
       <fileSets>
         <fileSet>
           <directory/>
+          <includes>
+          	<include>*</include>
+            <include>.gitignore</include>
+          </includes>
         </fileSet>
       </fileSets>
     </module>
@@ -17,6 +30,10 @@
       <fileSets>
         <fileSet>
           <directory/>
+          <includes>
+          	<include>*</include>
+            <include>.gitignore</include>
+          </includes>
         </fileSet>
       </fileSets>
     </module>
@@ -26,7 +43,8 @@
         <fileSet filtered="false" packaged="false">
           <directory></directory>
           <includes>
-            <include>*.bndrun</include>
+            <include>*</include>
+            <include>.gitignore</include>
           </includes>
         </fileSet>
       </fileSets>
