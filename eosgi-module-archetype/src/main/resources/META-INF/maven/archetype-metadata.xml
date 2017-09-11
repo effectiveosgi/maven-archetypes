@@ -24,6 +24,7 @@
       <directory/>
       <includes>
         <include>launch.bndrun</include>
+        <include>.gitignore</include>
       </includes>
     </fileSet>
   </fileSets>
