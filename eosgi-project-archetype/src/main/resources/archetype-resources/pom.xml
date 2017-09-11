@@ -27,7 +27,7 @@
 
   <properties>
     <local.index.policy>REQUIRED</local.index.policy>
-    <bnd.maven.version>3.4.0-SNAPSHOT</bnd.maven.version>
+    <bnd.maven.version>3.4.0</bnd.maven.version>
   </properties>
 
   <pluginRepositories>

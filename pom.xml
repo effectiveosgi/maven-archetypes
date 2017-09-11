@@ -50,6 +50,7 @@ limitations under the License.
 		<local.index.policy>REQUIRED</local.index.policy>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<bnd.maven.version>3.4.0</bnd.maven.version>
 	</properties>
 
 	<dependencyManagement>
@@ -95,7 +96,7 @@ limitations under the License.
 				<plugin>
 					<groupId>biz.aQute.bnd</groupId>
 					<artifactId>bnd-maven-plugin</artifactId>
-					<version>3.3.0</version>
+					<version>${bnd.maven.version}</version>
 					<configuration>
 						<bnd><![CDATA[
 							# Automatically export any package annotated with @Version in its package-info.java
@@ -124,7 +125,7 @@ limitations under the License.
 				<plugin>
 					<groupId>biz.aQute.bnd</groupId>
 					<artifactId>bnd-indexer-maven-plugin</artifactId>
-					<version>3.3.0</version>
+					<version>${bnd.maven.version}</version>
 					<executions>
 						<execution>
 							<id>default-index</id>
@@ -161,7 +162,7 @@ limitations under the License.
 		<repository>
 			<id>bintray-effectiveosgi-eosgi-maven</id>
 			<name>effectiveosgi-eosgi-maven</name>
-			<url>https://api.bintray.com/maven/effectiveosgi/eosgi-maven/eosgi-maven-archetypes/;publish=1</url>
+			<url>https://api.bintray.com/maven/effectiveosgi/eosgi-maven/eosgi-maven-archetypes</url>
 		</repository>
 	</distributionManagement>
 
