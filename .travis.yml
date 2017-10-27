@@ -1,6 +1,4 @@
 language: java
-
-script: mvn -B --settings ./.travis-maven-settings.xml verify org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy
-
+script: mvn test -B
 jdk:
-  - oraclejdk7
+  - openjdk8
