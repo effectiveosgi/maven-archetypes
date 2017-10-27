@@ -28,21 +28,38 @@ limitations under the License.
 			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
-	
+
+	<developers>
+		<developer>
+			<name>Neil Bartlett</name>
+			<email>nbartlett@fastmail.net</email>
+			<organization>Effective OSGi</organization>
+			<organizationUrl>https://effectiveosgi.com/</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:effectiveosgi/maven-archetypes.git</connection>
+		<developerConnection>scm:git:git@github.com:effectiveosgi/maven-archetypes.git</developerConnection>
+		<url>http://github.com/effectiveosgi/maven-archetypes/tree/master</url>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
 	<modules>
 		<module>eosgi-project-archetype</module>
 		<module>eosgi-module-archetype</module>
 		<module>eosgi-test-module-archetype</module>
 	</modules>
-
-	<profiles>
-		<profile>
-			<id>CI_Build</id>
-			<properties>
-				<local.index.policy>FORBIDDEN</local.index.policy>
-			</properties>
-		</profile>
-	</profiles>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -89,12 +106,55 @@ limitations under the License.
 		</dependencies>
 	</dependencyManagement>
 
-	<distributionManagement>
-		<repository>
-			<id>bintray-effectiveosgi-eosgi-maven</id>
-			<name>effectiveosgi-eosgi-maven</name>
-			<url>https://api.bintray.com/maven/effectiveosgi/eosgi-maven/eosgi-maven-archetypes</url>
-		</repository>
-	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<keyname>Neil Bartlett [Fastmail]</keyname>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	
+	</build>
 
 </project>
