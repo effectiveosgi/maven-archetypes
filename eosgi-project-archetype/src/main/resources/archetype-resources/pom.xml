@@ -29,7 +29,7 @@
     <local.index.policy>REQUIRED</local.index.policy>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <bnd.maven.version>3.4.0</bnd.maven.version>
+    <bnd.maven.version>3.5.0</bnd.maven.version>
   </properties>
 
   <pluginRepositories>
