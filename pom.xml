@@ -18,7 +18,7 @@ limitations under the License.
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.effectiveosgi</groupId>
 	<artifactId>eosgi-archetypes-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>Effective OSGi Maven Archetypes</name>
 	<url>http://github.com/effectiveosgi/maven-archetypes</url>
 	<description>Maven archetypes for OSGi projects</description>
@@ -44,7 +44,8 @@ limitations under the License.
 		<connection>scm:git:git@github.com:effectiveosgi/maven-archetypes.git</connection>
 		<developerConnection>scm:git:git@github.com:effectiveosgi/maven-archetypes.git</developerConnection>
 		<url>http://github.com/effectiveosgi/maven-archetypes/tree/master</url>
-	</scm>
+	  <tag>eosgi-archetypes-parent-0.0.1</tag>
+  </scm>
 
 	<distributionManagement>
 		<snapshotRepository>
