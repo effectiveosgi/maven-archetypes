@@ -1,4 +1,4 @@
 language: java
-script: mvn test -B
+install: mvn install -Dgpg.skip=true
 jdk:
   - openjdk8
