@@ -1,5 +1,5 @@
-Effective OSGi Examples and Archetypes
-======================================
+Effective OSGi Maven Archetypes
+===============================
 
 <!-- toc -->
 
@@ -54,11 +54,11 @@ Note that the *first* time you run bnd this way it may take several minutes, bec
 
 To run bnd on any other supported OS, download the following file:
 
-    http://search.maven.org/remotecontent?filepath=biz/aQute/bnd/biz.aQute.bnd/3.3.0/biz.aQute.bnd-3.3.0.jar
+    http://search.maven.org/remotecontent?filepath=biz/aQute/bnd/biz.aQute.bnd/3.5.0/biz.aQute.bnd-3.5.0.jar
 
 ...and execute with:
 
-    java -jar /path/to/biz.aQute.bnd-3.3.0.jar
+    java -jar /path/to/biz.aQute.bnd-3.5.0.jar
 
 
 Effective OSGi Project Layout
