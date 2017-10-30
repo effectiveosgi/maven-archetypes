@@ -154,7 +154,7 @@ In step 2 you built an OSGi Application that contained only the Gogo shell. We w
 
 #### 5.1. Refer to Bundle from Application
 
-First we need to reference our bundle module from the `_index` module. This module generates an OSGi repository index XML file as defined in section 132.5 of the [OSGi Compendium R6 specification](https://www.osgi.org/developer/downloads/release-6/). This index file is useful in itself for a number of purposes, but we will use it as a stepping stone to defining our application. Open `_index/pom.xml` and add the following dependency block following the "Workspace Dependencies" comment:
+First we need to reference our bundle module from the `_distro` module. This module is referenced by the index module which generates an OSGi repository index XML file as defined in section 132.5 of the [OSGi Compendium R6 specification](https://www.osgi.org/developer/downloads/release-6/). This index file is useful in itself for a number of purposes, but we will use it as a stepping stone to defining our application. Open `_distro/pom.xml` and add the following dependency block following the "Workspace Dependencies" comment:
 
     <dependency>
       <groupId>${project.groupId}</groupId>
