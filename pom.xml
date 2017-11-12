@@ -18,7 +18,7 @@ limitations under the License.
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.effectiveosgi</groupId>
 	<artifactId>eosgi-archetypes-parent</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>Effective OSGi Maven Archetypes</name>
 	<url>http://github.com/effectiveosgi/maven-archetypes</url>
 	<description>Maven archetypes for OSGi projects</description>
