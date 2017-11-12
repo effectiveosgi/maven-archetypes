@@ -81,7 +81,7 @@ Copy-paste the following lines to your command prompt:
 
     mvn archetype:generate \
     -DarchetypeGroupId=com.effectiveosgi \
-    -DarchetypeVersion=0.0.1 \
+    -DarchetypeVersion=0.0.2 \
     -DarchetypeArtifactId=eosgi-project-archetype
 
 You will be asked to choose a group ID, artifact ID, version and Java package name for your new project. Enter `org.example` for the group ID and `example-parent` for the artifact ID. Accept the default values for all other inputs.
@@ -107,7 +107,7 @@ In this step we add a new Maven module to build an OSGi bundle. From the `exampl
 
     mvn archetype:generate \
     -DarchetypeGroupId=com.effectiveosgi \
-    -DarchetypeVersion=0.0.1 \
+    -DarchetypeVersion=0.0.2 \
     -DarchetypeArtifactId=eosgi-module-archetype
     
 Use `org.example` for the group ID and `org.example.hello` for the artifact ID.
@@ -135,7 +135,7 @@ From the `example-parent` directory run:
 
     mvn archetype:generate \
     -DarchetypeGroupId=com.effectiveosgi \
-    -DarchetypeVersion=0.0.1 \
+    -DarchetypeVersion=0.0.2 \
     -DarchetypeArtifactId=eosgi-test-module-archetype
 
 Use `org.example` for the group ID and `org.example.test` for the artifact ID. To run the integration tests:
