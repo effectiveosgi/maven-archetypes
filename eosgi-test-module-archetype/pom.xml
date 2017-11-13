@@ -23,4 +23,12 @@ limitations under the License.
     <artifactId>eosgi-test-module-archetype</artifactId>
     <name>Effective OSGi Maven Test Module Archetype</name>
     <packaging>jar</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>

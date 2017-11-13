@@ -110,6 +110,34 @@ limitations under the License.
 	</dependencyManagement>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.google.code.maven-replacer-plugin</groupId>
+					<artifactId>replacer</artifactId>
+					<version>1.5.3</version>
+					<executions>
+						<execution>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>replace</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<file>${project.build.outputDirectory}/META-INF/maven/archetype-metadata.xml</file>
+						<regex>false</regex>
+						<replacements>
+							<replacement>
+								<token>__DISTRO_VERSION_TEMPLATE__</token>
+								<valueFile>detect-distro.velocity</valueFile>
+							</replacement>
+						</replacements>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

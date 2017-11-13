@@ -1,3 +1,4 @@
+#set( $D = '$' )
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
@@ -8,9 +9,9 @@
   <dependencies>
     <!-- Distribution Dependency -->
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>${D}{project.groupId}</groupId>
       <artifactId>_distro</artifactId>
-      <version>${project.version}</version>
+      <version>$version</version> ## Comes from the initial project version parameter in the archetype
       <scope>runtime</scope>
       <type>pom</type>
     </dependency>

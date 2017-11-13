@@ -1,0 +1,34 @@
+## Force mvn to pass this whole block through to Velocity --> ${} ##
+## Bootstrap some types and methods we need to use...##
+#set($String='')##
+#set($System=$String.class.forName('java.lang.System'))##
+#set($File=$String.class.forName('java.io.File'))##
+#set($NewFile=$File.getConstructor($String.class))##
+#set($NewFileReader=$String.class.forName('java.io.FileReader').getConstructor($File))##
+#set($NewMavenXpp3Reader=$String.class.forName('org.apache.maven.model.io.xpp3.MavenXpp3Reader').getConstructor())##
+#set($errorResult='omit_distro')##
+
+#set($cwd=$System.getProperty('user.dir'))##
+#set($distroPomPath=$cwd + "/_distro/pom.xml")##
+#set($distroPomFile=$NewFile.newInstance($distroPomPath))##
+#if($distroPomFile.exists())##
+#set($pomFileReader=$NewFileReader.newInstance($distroPomFile))##
+#set($pomReader=$NewMavenXpp3Reader.newInstance())##
+#set($distroPom=$pomReader.read($pomFileReader))##
+#set($distroVersion=$distroPom.getVersion())##
+
+#if($distroVersion)##
+$distroVersion##
+#else ## null version in distro -> load from parent
+#set($parentPom=$distroPom.getParent())##
+#if($parentPom)##
+$parentPom.getVersion()##
+#else ## null parent
+$errorResult##
+#end##
+#end##
+#else ## distro file does not exist
+$errorResult##
+#end
+
+## If you can see this message, parsing the _distro/pom.xml probably failed.

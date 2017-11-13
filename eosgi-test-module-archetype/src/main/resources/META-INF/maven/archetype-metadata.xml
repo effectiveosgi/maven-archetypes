@@ -30,4 +30,10 @@
 
   </fileSets>
 
+  <requiredProperties>
+    <requiredProperty key="distro_version">
+      <defaultValue>__DISTRO_VERSION_TEMPLATE__</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+
 </archetype-descriptor>

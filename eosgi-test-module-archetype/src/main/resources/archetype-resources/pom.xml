@@ -1,3 +1,5 @@
+#set( $D = '$' )
+#set( $hasParent = !$distro_version.contains('omit_distro') )
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -11,10 +13,16 @@
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.core</artifactId>
+#if( !$hasParent )
+      <version>6.0.0</version>
+#end
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.cmpn</artifactId>
+#if( !$hasParent )
+      <version>6.0.0</version>
+#end
     </dependency>
     <dependency>
       <groupId>org.apache.servicemix.bundles</groupId>
@@ -23,13 +31,15 @@
     </dependency>
 
     <!-- Runtime dependencies -->
+#if($hasParent)
     <dependency>
-      <groupId>${project.groupId}</groupId>
+      <groupId>${D}{project.parent.groupId}</groupId>
       <artifactId>_distro</artifactId>
-      <version>${project.parent.version}</version>
+      <version>$distro_version</version>
       <scope>runtime</scope>
       <type>pom</type>
     </dependency>
+#end
   </dependencies>
 
   <build>
