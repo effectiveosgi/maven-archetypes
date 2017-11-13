@@ -30,7 +30,7 @@
     <local.index.policy>REQUIRED</local.index.policy>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-#if( $osgi_level == "R7" )
+#if( $osgiLevel == "R7" )
     <bnd.maven.version>4.0.0-SNAPSHOT</bnd.maven.version>
 #else
     <bnd.maven.version>3.5.0</bnd.maven.version>
@@ -38,7 +38,8 @@
   </properties>
 
   <repositories>
-#if( $osgi_level == "R7" )
+#if( $osgiLevel == "R7" )
+    <!-- These SNAPSHOT repositories are required for OSGi R7 usage in advance of the official release -->
     <repository>
         <id>OSGi Snapshots</id>
         <url>https://oss.sonatype.org/content/groups/osgi/</url>
@@ -49,11 +50,22 @@
             <enabled>true</enabled>
         </snapshots>
     </repository>
+    <repository>
+      <id>Apache Snapshots</id>
+      <url>https://repository.apache.org/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
 #end
   </repositories>
 
   <pluginRepositories>
-#if( $osgi_level == "R7" )
+#if( $osgiLevel == "R7" )
+    <!-- The bnd SNAPSHOT repository is required for OSGi R7 usage in advance of the official release -->
     <pluginRepository>
       <id>bnd.master</id>
       <snapshots>
@@ -70,7 +82,7 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.core</artifactId>
-#if( $osgi_level == "R7" )
+#if( $osgiLevel == "R7" )
         <version>7.0.0-SNAPSHOT</version>
 #else
         <version>6.0.0</version>
@@ -80,7 +92,7 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.cmpn</artifactId>
-#if( $osgi_level == "R7" )
+#if( $osgiLevel == "R7" )
         <version>7.0.0-SNAPSHOT</version>
 #else
         <version>6.0.0</version>
@@ -90,7 +102,7 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.annotation</artifactId>
-#if( $osgi_level == "R7" )
+#if( $osgiLevel == "R7" )
         <version>7.0.0-SNAPSHOT</version>
 #else
         <version>6.0.1</version>

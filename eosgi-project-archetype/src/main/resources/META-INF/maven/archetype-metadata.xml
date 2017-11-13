@@ -52,7 +52,7 @@
   </modules>
 
   <requiredProperties>
-    <requiredProperty key="osgi_level">
+    <requiredProperty key="osgiLevel">
       <defaultValue>R6</defaultValue>
       <validationRegex>(R6)|(R7)</validationRegex>
     </requiredProperty>
