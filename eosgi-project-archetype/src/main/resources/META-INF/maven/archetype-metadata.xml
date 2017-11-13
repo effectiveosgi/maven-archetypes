@@ -51,4 +51,11 @@
     </module>
   </modules>
 
+  <requiredProperties>
+    <requiredProperty key="osgi_level">
+      <defaultValue>R6</defaultValue>
+      <validationRegex>(R6)|(R7)</validationRegex>
+    </requiredProperty>
+  </requiredProperties>
+
 </archetype-descriptor>

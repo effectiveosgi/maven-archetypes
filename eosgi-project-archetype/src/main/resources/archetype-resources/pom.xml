@@ -1,10 +1,11 @@
+#set( $D = '$' )
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>${groupId}</groupId>
-  <artifactId>${artifactId}</artifactId>
-  <version>${version}</version>
+  <groupId>$groupId</groupId>
+  <artifactId>$artifactId</artifactId>
+  <version>$version</version>
 
   <packaging>pom</packaging>
 
@@ -29,10 +30,30 @@
     <local.index.policy>REQUIRED</local.index.policy>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+#if( $osgi_level == "R7" )
+    <bnd.maven.version>4.0.0-SNAPSHOT</bnd.maven.version>
+#else
     <bnd.maven.version>3.5.0</bnd.maven.version>
+#end
   </properties>
 
+  <repositories>
+#if( $osgi_level == "R7" )
+    <repository>
+        <id>OSGi Snapshots</id>
+        <url>https://oss.sonatype.org/content/groups/osgi/</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+#end
+  </repositories>
+
   <pluginRepositories>
+#if( $osgi_level == "R7" )
     <pluginRepository>
       <id>bnd.master</id>
       <snapshots>
@@ -40,6 +61,7 @@
       </snapshots>
       <url>https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/dist/bundles</url>
     </pluginRepository>
+#end
   </pluginRepositories>
 
   <dependencyManagement>
@@ -48,19 +70,31 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.core</artifactId>
+#if( $osgi_level == "R7" )
+        <version>7.0.0-SNAPSHOT</version>
+#else
         <version>6.0.0</version>
+#end
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.cmpn</artifactId>
+#if( $osgi_level == "R7" )
+        <version>7.0.0-SNAPSHOT</version>
+#else
         <version>6.0.0</version>
+#end
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.annotation</artifactId>
+#if( $osgi_level == "R7" )
+        <version>7.0.0-SNAPSHOT</version>
+#else
         <version>6.0.1</version>
+#end
         <scope>provided</scope>
       </dependency>
 
@@ -80,10 +114,9 @@
         <plugin>
           <groupId>biz.aQute.bnd</groupId>
           <artifactId>bnd-maven-plugin</artifactId>
-          <version>${bnd.maven.version}</version>
+          <version>${D}{bnd.maven.version}</version>
           <configuration>
             <bnd><![CDATA[
-#set ( $D = '$' )
 # Automatically export any package annotated with @Version in its package-info.java
 -exportcontents: ${D}{packages;VERSIONED}
 
@@ -110,10 +143,10 @@
         <plugin>
           <groupId>biz.aQute.bnd</groupId>
           <artifactId>bnd-indexer-maven-plugin</artifactId>
-          <version>${bnd.maven.version}</version>
+          <version>${D}{bnd.maven.version}</version>
           <configuration>
             <includeJar>true</includeJar>
-            <localURLs>${local.index.policy}</localURLs>
+            <localURLs>${D}{local.index.policy}</localURLs>
           </configuration>
           <executions>
             <execution>
@@ -128,7 +161,7 @@
         <plugin>
           <groupId>biz.aQute.bnd</groupId>
           <artifactId>bnd-export-maven-plugin</artifactId>
-          <version>${bnd.maven.version}</version>
+          <version>${D}{bnd.maven.version}</version>
           <executions>
             <execution>
               <goals>
@@ -141,7 +174,7 @@
         <plugin>
           <groupId>biz.aQute.bnd</groupId>
           <artifactId>bnd-testing-maven-plugin</artifactId>
-          <version>${bnd.maven.version}</version>
+          <version>${D}{bnd.maven.version}</version>
           <configuration>
             <resolve>true</resolve>
             <failOnChanges>true</failOnChanges>
@@ -169,7 +202,7 @@
         <plugin>
             <groupId>biz.aQute.bnd</groupId>
             <artifactId>bnd-baseline-maven-plugin</artifactId>
-            <version>${bnd.maven.version}</version>
+            <version>${D}{bnd.maven.version}</version>
             <configuration>
               <!-- Recommended to remove the following setting after the first release of your project -->
               <failOnMissing>false</failOnMissing>
