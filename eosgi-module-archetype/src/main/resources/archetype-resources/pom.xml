@@ -1,4 +1,5 @@
 #set( $D = '$' )
+#set( $hasParent = !$distro_version.contains('omit_distro') )
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -7,24 +8,44 @@
   <artifactId>$artifactId</artifactId>
   <version>$version</version>
 
+  <properties>
+#if( !$hasParent )
+    <bnd.maven.version>3.5.0</bnd.maven.version>
+#end
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.cmpn</artifactId>
+#if( !$hasParent )
+      <version>6.0.0</version>
+#end
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.core</artifactId>
+#if( !$hasParent )
+      <version>6.0.0</version>
+#end
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.annotation</artifactId>
+#if( !$hasParent )
+      <version>6.0.1</version>
+#end
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+#if( !$hasParent )
+      <version>4.12</version>
+      <scope>test</scope>
+#end
     </dependency>
 
+#if( $hasParent )
     <dependency>
       <groupId>${D}{project.parent.groupId}</groupId>
       <artifactId>_distro</artifactId>
@@ -32,18 +53,82 @@
       <scope>runtime</scope>
       <type>pom</type>
     </dependency>
+#end
   </dependencies>
 
   <build>
     <plugins>
+#if( !$hasParent )
+      <plugin>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-maven-plugin</artifactId>
+        <version>${D}{bnd.maven.version}</version>
+        <configuration>
+          <bnd><![CDATA[
+# Automatically export any package annotated with @Version in its package-info.java
+-exportcontents: ${D}{packages;VERSIONED}
+
+# Generate an OSGi Contract Requirement for bundles that depend on the Servlet API
+# (see https://www.osgi.org/portable-java-contract-definitions/)
+-contract: JavaServlet
+
+# Force Declarative Services bundles to declare a requirement for DS version 1.3
+# even when they only use features from a previous version
+-dsannotations-options: extender, inherit
+          ]]>
+          </bnd>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-bnd-process</id>
+            <goals>
+              <goal>bnd-process</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+#end
       <plugin>
         <groupId>biz.aQute.bnd</groupId>
         <artifactId>bnd-indexer-maven-plugin</artifactId>
+#if( !$hasParent )
+        <version>${D}{bnd.maven.version}</version>
+        <configuration>
+          <includeJar>true</includeJar>
+          <localURLs>${D}{local.index.policy}</localURLs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-index</id>
+            <goals>
+              <goal>index</goal>
+            </goals>
+          </execution>
+        </executions>
+#end
       </plugin>
+
       <plugin>
         <groupId>biz.aQute.bnd</groupId>
         <artifactId>bnd-baseline-maven-plugin</artifactId>
+#if( !$hasParent )
+        <version>${D}{bnd.maven.version}</version>
+#end
       </plugin>
+#if( !$hasParent )
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <archive>
+            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
+      </plugin>
+#end
     </plugins>
   </build>
 
