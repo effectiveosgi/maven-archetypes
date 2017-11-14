@@ -7,6 +7,9 @@
 # -runfw: org.eclipse.osgi;version=3.12
 # -runproperties.equinox: osgi.console=, osgi.console.enable.builtin=false
 
+## Knopflerfish
+# -runfw: org.knopflerfish.framework;version=8.0
+
 -runee: JavaSE-1.8
 -runprovidedcapabilities: ${native_capability}
 

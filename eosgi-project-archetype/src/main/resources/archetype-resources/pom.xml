@@ -61,6 +61,13 @@
       </snapshots>
     </repository>
 #end
+    <!-- Uncomment to enable Knopflerfish repository
+    <repository>
+      <id>Knopflerfish 6 Repository</id>
+      <name>Knopflerfish 6 Releases Repository</name>
+      <url>http://resources.knopflerfish.org/repo/maven2/release</url> 
+    </repository>
+    -->
   </repositories>
 
   <pluginRepositories>

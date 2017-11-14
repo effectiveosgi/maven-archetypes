@@ -68,6 +68,15 @@
       <version>3.12.0</version>
       <scope>runtime</scope>
     </dependency>
+    <!-- Uncomment to enable Knopflerfish.
+         NB also uncomment Knopflerfish repository in parent POM.
+    <dependency>
+      <groupId>org.knopflerfish.kf6</groupId>
+      <artifactId>framework</artifactId>
+      <version>8.0.6</version>
+      <scope>runtime</scope>
+    </dependency>
+    -->
     <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.scr</artifactId>
