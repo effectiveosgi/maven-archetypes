@@ -4,7 +4,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <artifactId>${artifactId}</artifactId>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <dependencies>
     <!-- Distribution Dependency -->
