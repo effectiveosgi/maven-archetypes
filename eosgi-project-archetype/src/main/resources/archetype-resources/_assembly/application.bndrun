@@ -1,6 +1,12 @@
 -standalone: ../_index/target/index.xml
 
+# Apache Felix
 -runfw: org.apache.felix.framework;version=5.6
+
+## Eclipse Equinox
+# -runfw: org.eclipse.osgi;version=3.12
+# -runproperties.equinox: osgi.console=, osgi.console.enable.builtin=false
+
 -runee: JavaSE-1.8
 -runprovidedcapabilities: ${native_capability}
 
