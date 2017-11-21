@@ -12,6 +12,9 @@
         <include>**/*.java</include>
       </includes>
     </fileSet>
+    <fileSet filtered="true">
+      <directory>src/main/resources</directory>
+    </fileSet>
 
     <fileSet filtered="true" packaged="true">
       <directory>src/test/java</directory>
@@ -19,6 +22,10 @@
         <include>**/*.java</include>
       </includes>
     </fileSet>
+    <fileSet filtered="true">
+      <directory>src/test/resources</directory>
+    </fileSet>
+
 
     <fileSet filtered="true" packaged="false">
       <directory/>
