@@ -16,12 +16,16 @@
 -resolve.effective: active; skip:="osgi.service"
 
 -runrequires: \
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.jline)',\
         osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.log)'
+        osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
+        bnd.identity;id=com.effectiveosgi.rt.config
 
 -runbundles: \
-        org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
-        org.apache.felix.gogo.runtime;version='[1.0.6,1.0.7)',\
-        org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
-        org.apache.felix.log;version='[1.0.1,1.0.2)'
+	com.effectiveosgi.rt.config;version='[1.0.0,1.0.1)',\
+	org.apache.felix.configadmin;version='[1.8.14,1.8.15)',\
+	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
+	org.apache.felix.gogo.jline;version='[1.0.10,1.0.11)',\
+	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
+	org.jline;version='[3.2.0,3.2.1)'
