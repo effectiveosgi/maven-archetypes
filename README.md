@@ -84,13 +84,13 @@ Copy-paste the following lines to your command prompt:
     -DarchetypeVersion=0.0.2 \
     -DarchetypeArtifactId=eosgi-project-archetype
 
-You will be asked to choose a group ID, artifact ID, version and Java package name for your new project. Enter `org.example` for the group ID and `example-parent` for the artifact ID. Accept the default values for all other inputs.
+You will be asked to choose a group ID, artifact ID, version and Java package name for your new project. Enter `org.example` for the group ID and `org.example.parent` for the artifact ID. Accept the default values for all other inputs.
 
 ### 2. Build and Run the Application
 
 The generated parent project contains an assembly module that is used to build OSGi applications. To build it and run:
 
-    cd example-parent
+    cd org.example.parent
     mvn package
     bnd run _assembly/application.bndrun
 
@@ -103,7 +103,7 @@ It's also possible to run the same application with the same set of bundles as f
 
 ### 3. Add a Bundle Module
 
-In this step we add a new Maven module to build an OSGi bundle. From the `example-parent` directory run:
+In this step we add a new Maven module to build an OSGi bundle. From the `org.example.parent` directory run:
 
     mvn archetype:generate \
     -DarchetypeGroupId=com.effectiveosgi \
@@ -131,7 +131,7 @@ You should see the Hello World output.
 
 In this step we add a new Maven module that performs OSGi integration testing. I.e., it defines an OSGi bundle containing tests, runs that bundle in an OSGi Framework and reports the test results.
 
-From the `example-parent` directory run:
+From the `org.example.parent` directory run:
 
     mvn archetype:generate \
     -DarchetypeGroupId=com.effectiveosgi \
