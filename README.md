@@ -165,9 +165,9 @@ First we need to reference our bundle module from the `_index` module. This modu
 Now edit `_assembly/application.bndrun` to specify that the application should contain the bundle `org.example.hello`. This is done by adding a line to the `-runrequires` section, which should now appear as follows:
 
     -runrequires: \
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-        osgi.identity;filter:='(osgi.identity=org.example.hello)'
+        bnd.identity;id=org.apache.felix.gogo.shell,\
+        bnd.identity;id=org.apache.felix.gogo.command,\
+        bnd.identity;id=org.example.hello
 
 **N.B.:** Be sure to enter the last line exactly as shown and to add ",\" (comma backslash) to the previous line.
 

@@ -16,9 +16,9 @@
 -resolve.effective: active; skip:="osgi.service"
 
 -runrequires: \
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.jline)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
+        bnd.identity;id=org.apache.felix.gogo.jline,\
+        bnd.identity;id=org.apache.felix.gogo.command,\
+        bnd.identity;id=org.apache.felix.log,\
         bnd.identity;id=com.effectiveosgi.rt.config
 
 -runbundles: \

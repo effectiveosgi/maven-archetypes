@@ -9,10 +9,10 @@
 -resolve.effective: active; skip:="osgi.service"
 
 -runrequires: \
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
-        osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
-        osgi.identity;filter:='(osgi.identity=${artifactId})'
+        bnd.identity;id=org.apache.felix.gogo.command,\
+        bnd.identity;id=org.apache.felix.gogo.shell,\
+        bnd.identity;id=org.apache.felix.log,\
+        bnd.identity;id=${artifactId}
 
 -runbundles: \
         org.apache.felix.gogo.runtime,\

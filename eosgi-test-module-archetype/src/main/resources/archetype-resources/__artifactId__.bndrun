@@ -7,7 +7,7 @@
 -resolve.effective: active; skip:='osgi.service'
 
 -runrequires: \
-        osgi.identity;filter:='(osgi.identity=${artifactId})'
+        bnd.identity;id=${artifactId}
 
 -runbundles: \
         org.apache.servicemix.bundles.junit;version='[4.12.0,4.12.1)',\
