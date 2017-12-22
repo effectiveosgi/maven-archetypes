@@ -40,7 +40,7 @@
 
     <module name="_assembly" id="_assembly" dir="_assembly">
       <fileSets>
-        <fileSet filtered="false" packaged="false">
+        <fileSet filtered="true">
           <directory></directory>
           <includes>
             <include>*</include>

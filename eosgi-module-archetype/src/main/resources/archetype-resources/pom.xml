@@ -10,30 +10,46 @@
 
   <properties>
 #if( !$hasParent )
+#if( $osgiLevel == "R7" )
+    <bnd.maven.version>4.0.0-SNAPSHOT</bnd.maven.version>
+#else
     <bnd.maven.version>3.5.0</bnd.maven.version>
+#end
 #end
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.osgi</groupId>
-      <artifactId>osgi.cmpn</artifactId>
+      <artifactId>osgi.core</artifactId>
 #if( !$hasParent )
+#if( $osgiLevel == "R7" )
+      <version>7.0.0-SNAPSHOT</version>
+#else
       <version>6.0.0</version>
+#end
 #end
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
-      <artifactId>osgi.core</artifactId>
+      <artifactId>osgi.cmpn</artifactId>
 #if( !$hasParent )
+#if( $osgiLevel == "R7" )
+      <version>7.0.0-SNAPSHOT</version>
+#else
       <version>6.0.0</version>
+#end
 #end
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.annotation</artifactId>
 #if( !$hasParent )
+#if( $osgiLevel == "R7" )
+      <version>7.0.0-SNAPSHOT</version>
+#else
       <version>6.0.1</version>
+#end
 #end
     </dependency>
     <dependency>

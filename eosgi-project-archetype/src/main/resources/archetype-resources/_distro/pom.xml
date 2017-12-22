@@ -22,14 +22,12 @@
       <version>5.7.0-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
-    <!-- Unfortunately Eclipse Equinox SNAPSHOTs are not yet available from a Maven repository.
     <dependency>
       <groupId>org.eclipse.platform</groupId>
       <artifactId>org.eclipse.osgi</artifactId>
-      <version>3.13.0-SNAPSHOT</version>
+      <version>[3.13,)</version>
       <scope>runtime</scope>
     </dependency>
-    -->
     <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.scr</artifactId>

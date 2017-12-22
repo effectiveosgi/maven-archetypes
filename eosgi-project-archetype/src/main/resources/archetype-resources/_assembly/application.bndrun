@@ -1,14 +1,16 @@
+## Render most of the file unparsed by Velocity
+#[[
 -standalone: ../_index/target/index.xml
 
 # Apache Felix
--runfw: org.apache.felix.framework;version=5.6
+-runfw: org.apache.felix.framework
 
 ## Eclipse Equinox
-# -runfw: org.eclipse.osgi;version=3.12
+# -runfw: org.eclipse.osgi
 # -runproperties.equinox: osgi.console=, osgi.console.enable.builtin=false
 
 ## Knopflerfish
-# -runfw: org.knopflerfish.framework;version=8.0
+# -runfw: org.knopflerfish.framework
 
 -runee: JavaSE-1.8
 -runprovidedcapabilities: ${native_capability}
@@ -20,7 +22,18 @@
         bnd.identity;id=org.apache.felix.gogo.command,\
         bnd.identity;id=org.apache.felix.log,\
         bnd.identity;id=com.effectiveosgi.rt.config
+]]#
 
+#if( $osgiLevel == "R7" )
+-runbundles: \
+	com.effectiveosgi.rt.config;version='[1.0.0,1.0.1)',\
+	org.apache.felix.configadmin;version='[1.9.0,1.9.1)',\
+	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
+	org.apache.felix.gogo.jline;version='[1.0.10,1.0.11)',\
+	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
+	org.apache.felix.log;version='[1.1.0,1.1.1)',\
+	org.jline;version='[3.2.0,3.2.1)'
+#else
 -runbundles: \
 	com.effectiveosgi.rt.config;version='[1.0.0,1.0.1)',\
 	org.apache.felix.configadmin;version='[1.8.14,1.8.15)',\
@@ -29,3 +42,4 @@
 	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
 	org.apache.felix.log;version='[1.0.1,1.0.2)',\
 	org.jline;version='[3.2.0,3.2.1)'
+#end

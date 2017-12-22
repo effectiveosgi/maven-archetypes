@@ -1,11 +1,16 @@
 -standalone: target/index.xml
 
+#if( $osgiLevel == "R7" )
+-runfw: org.eclipse.osgi
+#else
 -runfw: org.apache.felix.framework
+#end
 -runee: JavaSE-1.8
+#[[
 ## Uncomment below to permit remote debugging on port 7001
 #-runvm: "-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=7001"
 -resolve.effective: active; skip:='osgi.service'
-
+]]#
 -runrequires: \
         bnd.identity;id=${artifactId}
 

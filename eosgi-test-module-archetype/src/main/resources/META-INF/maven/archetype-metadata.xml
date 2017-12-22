@@ -37,6 +37,11 @@
     <requiredProperty key="distro_version">
       <defaultValue>__DISTRO_VERSION_TEMPLATE__</defaultValue>
     </requiredProperty>
+
+    <requiredProperty key="osgiLevel">
+      <defaultValue>R6</defaultValue>
+      <validationRegex>(R6)|(R7)</validationRegex>
+    </requiredProperty>
   </requiredProperties>
 
 </archetype-descriptor>
