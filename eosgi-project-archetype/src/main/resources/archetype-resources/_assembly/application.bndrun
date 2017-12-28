@@ -1,16 +1,28 @@
-## Render most of the file unparsed by Velocity
-#[[
+## Define a macro for double-hash to avoid intepreting as a Velocity comment
+#set( $HH = '##' )
 -standalone: ../_index/target/index.xml
 
+#if( $osgiLevel == "R7" )
+${HH} Apache Felix
+# -runfw: org.apache.felix.framework
+
+# Eclipse Equinox
+-runfw: org.eclipse.osgi
+-runproperties.equinox: osgi.console=, osgi.console.enable.builtin=false
+
+${HH} Knopflerfish
+# -runfw: org.knopflerfish.framework
+#else
 # Apache Felix
 -runfw: org.apache.felix.framework
 
-## Eclipse Equinox
+${HH} Eclipse Equinox
 # -runfw: org.eclipse.osgi
 # -runproperties.equinox: osgi.console=, osgi.console.enable.builtin=false
 
-## Knopflerfish
+${HH} Knopflerfish
 # -runfw: org.knopflerfish.framework
+#end
 
 -runee: JavaSE-1.8
 -runprovidedcapabilities: ${native_capability}
@@ -22,7 +34,6 @@
         bnd.identity;id=org.apache.felix.gogo.command,\
         bnd.identity;id=org.apache.felix.log,\
         bnd.identity;id=com.effectiveosgi.rt.config
-]]#
 
 #if( $osgiLevel == "R7" )
 -runbundles: \

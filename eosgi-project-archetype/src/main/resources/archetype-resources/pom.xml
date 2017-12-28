@@ -70,12 +70,6 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
-    <!-- Equinox does not provide a snapshots repo; we have to use this local directory
-         until an R7-compatible version is released. -->
-    <repository>
-      <id>local-maven-repo</id>
-      <url>file:///${project.basedir}/../local-maven-repo</url>
-    </repository> 
 #end
     <!-- Uncomment to enable Knopflerfish repository
     <repository>

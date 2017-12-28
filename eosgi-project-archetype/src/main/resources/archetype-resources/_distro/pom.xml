@@ -17,15 +17,12 @@
 #if( $osgiLevel == "R7" )
     <!-- Begin OSGi R7-specific SNAPSHOT dependencies -->
     <dependency>
-      <groupId>org.apache.felix</groupId>
-      <artifactId>org.apache.felix.framework</artifactId>
-      <version>5.7.0-SNAPSHOT</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.platform</groupId>
-      <artifactId>org.eclipse.osgi</artifactId>
-      <version>[3.13,)</version>
+      <!-- Equinox does not publish Maven Snapshots. This dependency is
+           offered in the Effective OSGi group until the release of Equinox
+           3.13 is available -->
+      <groupId>com.effectiveosgi</groupId>
+      <artifactId>eosgi-equinox</artifactId>
+      <version>3.13.0-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
