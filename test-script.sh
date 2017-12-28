@@ -114,9 +114,9 @@ function runtests() {
 }
 
 BND3_PATH=$(pwd)/.travis/bnd-3.5.0.jar
-BND4_PATH=$(pwd)/.travis/bnd-4.0.0.201712272121-SNAPSHOTjar
+BND4_PATH=$(pwd)/.travis/bnd-4.0.0.201712272121-SNAPSHOT.jar
 
 runtests R6 $BND3_PATH
-#runtests R7 $BND4_PATH
+runtests R7 $BND4_PATH
 
 echo TESTS PASSED

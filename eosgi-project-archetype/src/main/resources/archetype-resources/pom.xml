@@ -41,14 +41,24 @@
 #if( $osgiLevel == "R7" )
     <!-- These SNAPSHOT repositories are required for OSGi R7 usage in advance of the official release -->
     <repository>
-        <id>OSGi Snapshots</id>
-        <url>https://oss.sonatype.org/content/groups/osgi/</url>
-        <releases>
-            <enabled>false</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
+      <id>OSSRH Snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>OSGi Snapshots</id>
+      <url>https://oss.sonatype.org/content/groups/osgi/</url>
+      <releases>
+          <enabled>false</enabled>
+      </releases>
+      <snapshots>
+          <enabled>true</enabled>
+      </snapshots>
     </repository>
     <repository>
       <id>Apache Snapshots</id>
