@@ -2,7 +2,7 @@
 
 set -e
 
-ARCHETYPES_VERSION=0.0.3-SNAPSHOT
+ARCHETYPES_VERSION=0.0.4-SNAPSHOT
 
 TARGET_DIR=$(pwd)/target
 PREFIX_DIR=${TARGET_DIR}/test_
@@ -30,7 +30,7 @@ function runtests() {
 	echo '>>>'  Generating top-level project ${PARENT_ARTIFACT_ID}
 	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
-		-DarchetypeVersion=0.0.3-SNAPSHOT \
+		-DarchetypeVersion=${ARCHETYPES_VERSION} \
 		-DarchetypeArtifactId=eosgi-project-archetype \
 		-DgroupId=${GROUP_ID} \
 		-DartifactId=${PARENT_ARTIFACT_ID} \
@@ -44,7 +44,7 @@ function runtests() {
 	echo '>>>'  Generating child module ${MODULE_ARTIFACT_ID}
 	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
-		-DarchetypeVersion=0.0.3-SNAPSHOT \
+		-DarchetypeVersion=${ARCHETYPES_VERSION} \
 		-DarchetypeArtifactId=eosgi-module-archetype \
 		-DgroupId=${GROUP_ID} \
 		-DartifactId=${MODULE_ARTIFACT_ID} \
@@ -82,7 +82,7 @@ function runtests() {
 	echo '>>>'  Generating child test module ${TEST_MODULE_ARTIFACT_ID}
 	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
-		-DarchetypeVersion=0.0.3-SNAPSHOT \
+		-DarchetypeVersion=${ARCHETYPES_VERSION} \
 		-DarchetypeArtifactId=eosgi-test-module-archetype \
 		-DgroupId=${GROUP_ID} \
 		-DartifactId=${TEST_MODULE_ARTIFACT_ID} \
@@ -98,7 +98,7 @@ function runtests() {
 	cd ..
 	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
-		-DarchetypeVersion=0.0.3-SNAPSHOT \
+		-DarchetypeVersion=${ARCHETYPES_VERSION} \
 		-DarchetypeArtifactId=eosgi-module-archetype \
 		-DgroupId=${GROUP_ID} \
 		-DartifactId=${STANDALONE_MODULE_ARTIFACT_ID} \
