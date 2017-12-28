@@ -52,7 +52,8 @@ function runtests() {
 		-DosgiLevel=${1}
 
 	# Insert new module into _index/pom.xml
-	sed -i .bak 's|<!-- Workspace Dependencies -->|&\
+	echo '>>>'  Inserting new module ${MODULE_ARTIFACT_ID} into _index/pom.xml
+	sed -i.bak -e 's|<!-- Workspace Dependencies -->|&\
 		<dependency>\
 		<groupId>'${GROUP_ID}'</groupId>\
 		<artifactId>'${MODULE_ARTIFACT_ID}'</artifactId>\
@@ -61,7 +62,8 @@ function runtests() {
 	|' _index/pom.xml
 
 	# Insert new module to _assembly/application.bndrun
-	sed -i .bak 's|-runrequires: |&bnd.identity;id='${MODULE_ARTIFACT_ID}', |' _assembly/application.bndrun
+	echo '>>>'  Inserting new module ${MODULE_ARTIFACT_ID} into _assembly/application.bndrun
+	sed -i.bak -e 's|-runrequires: |&bnd.identity;id='${MODULE_ARTIFACT_ID}', |' _assembly/application.bndrun
 
 	# Build before resolving, this should fail
 	echo '>>>'  Building project with child module '(pre-resolve, should fail)'
