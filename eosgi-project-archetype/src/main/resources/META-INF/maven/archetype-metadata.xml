@@ -11,6 +11,12 @@
         <include>.gitignore</include>
       </includes>
     </fileSet>
+    <fileSet filtered="false" packaged="false">
+      <directory/>
+      <includes>
+        <include>local-maven-repo/**</include>
+      </includes>
+    </fileSet>
   </fileSets>
 
   <modules>

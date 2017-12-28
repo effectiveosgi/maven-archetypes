@@ -11,7 +11,8 @@
     <dependency>
       <groupId>${D}{project.groupId}</groupId>
       <artifactId>_distro</artifactId>
-      <version>$version</version> ## Comes from the initial project version parameter in the archetype
+## Comes from the initial project version parameter in the archetype
+      <version>$version</version>
       <scope>runtime</scope>
       <type>pom</type>
     </dependency>

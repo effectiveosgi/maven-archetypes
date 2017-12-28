@@ -3,7 +3,11 @@
 set -e
 
 ARCHETYPES_VERSION=0.0.3-SNAPSHOT
-PREFIX_DIR=target/test
+
+TARGET_DIR=$(pwd)/target
+PREFIX_DIR=${TARGET_DIR}/test_
+LOGFILE=${TARGET_DIR}/test.log
+
 GROUP_ID=org.example
 PARENT_ARTIFACT_ID=${GROUP_ID}.parent
 MODULE_ARTIFACT_ID=${GROUP_ID}.module
@@ -12,17 +16,19 @@ STANDALONE_MODULE_ARTIFACT_ID=${GROUP_ID}.standalone
 VERSION=1.0-SNAPSHOT
 
 function runtests() {
+	mkdir -p $TARGET_DIR
+
 	echo STARTING $1 TEMPLATE CHECKS
 	echo ===========================
 	ORIGINAL_DIR=$(pwd)
 
 	# Clean and recreate test folder
-	rm -rf ${PREFIX_DIR}_${1}
-	mkdir -p ${PREFIX_DIR}_${1}
-	cd ${PREFIX_DIR}_${1}
+	rm -rf ${PREFIX_DIR}${1}
+	mkdir -p ${PREFIX_DIR}${1}
+	cd ${PREFIX_DIR}${1}
 
-	echo ---  Generating top-level project ${PARENT_ARTIFACT_ID}
-	mvn -q -B archetype:generate \
+	echo '>>>'  Generating top-level project ${PARENT_ARTIFACT_ID}
+	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
 		-DarchetypeVersion=0.0.3-SNAPSHOT \
 		-DarchetypeArtifactId=eosgi-project-archetype \
@@ -31,12 +37,12 @@ function runtests() {
 		-Dversion=${VERSION} \
 		-DosgiLevel=${1}
 	cd ${PARENT_ARTIFACT_ID}
-	echo ---  Building top-level project...
-	mvn -q clean verify
+	echo '>>>'  Building top-level project... 
+	mvn clean verify
 
 	# Generate module
-	echo ---  Generating child module ${MODULE_ARTIFACT_ID}
-	mvn -q -B archetype:generate \
+	echo '>>>'  Generating child module ${MODULE_ARTIFACT_ID}
+	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
 		-DarchetypeVersion=0.0.3-SNAPSHOT \
 		-DarchetypeArtifactId=eosgi-module-archetype \
@@ -58,21 +64,21 @@ function runtests() {
 	sed -i .bak 's|-runrequires: |&bnd.identity;id='${MODULE_ARTIFACT_ID}', |' _assembly/application.bndrun
 
 	# Build before resolving, this should fail
-	echo ---  Building project with child module '(pre-resolve)'
-	if mvn -q clean verify > /dev/null; then
+	echo '>>>'  Building project with child module '(pre-resolve, should fail)'
+	if mvn clean verify; then
 		echo ERROR: Build should NOT have succeeded before resolve
 		exit 1
 	fi
 
 	# Resolve and rebuild
-	echo ---  Resolving _assembly/application.bndrun
-	java -jar $2 resolve resolve -W _assembly/application.bndrun
-	echo ---  Building project with child module '(post-resolve)'
-	mvn -q clean verify
+	echo '>>>'  Resolving _assembly/application.bndrun
+	java -jar $2 resolve resolve -Wb _assembly/application.bndrun
+	echo '>>>'  Building project with child module '(post-resolve, should pass)'
+	mvn clean verify
 
 	# Generate test module
-	echo ---  Generating child test module ${TEST_MODULE_ARTIFACT_ID}
-	mvn -q -B archetype:generate \
+	echo '>>>'  Generating child test module ${TEST_MODULE_ARTIFACT_ID}
+	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
 		-DarchetypeVersion=0.0.3-SNAPSHOT \
 		-DarchetypeArtifactId=eosgi-test-module-archetype \
@@ -82,13 +88,13 @@ function runtests() {
 		-DosgiLevel=${1}
 
 	# Build with test module
-	echo ---  Building project with test module
-	mvn -q clean verify
+	echo '>>>'  Building project with test module
+	mvn clean verify
 
 	# Generate standalone module
-	echo ---  Generating standalone module ${STANDALONE_MODULE_ARTIFACT_ID}
+	echo '>>>'  Generating standalone module ${STANDALONE_MODULE_ARTIFACT_ID}
 	cd ..
-	mvn -q -B archetype:generate \
+	mvn -B archetype:generate \
 		-DarchetypeGroupId=com.effectiveosgi \
 		-DarchetypeVersion=0.0.3-SNAPSHOT \
 		-DarchetypeArtifactId=eosgi-module-archetype \
@@ -99,24 +105,16 @@ function runtests() {
 
 	# Build standalone module
 	cd ${STANDALONE_MODULE_ARTIFACT_ID}
-	mvn -q clean verify
+	echo '>>>' Building standalone module ${STANDALONE_MODULE_ARTIFACT_ID}
+	mvn clean verify
 
 	cd $ORIGINAL_DIR
 }
 
-mkdir -p target
-BND3_PATH=$(pwd)/target/bnd3.jar
-BND4_PATH=$(pwd)/target/bnd4.jar
-
-echo Downloading bnd 3.5.0
-curl -o $BND3_PATH http://search.maven.org/remotecontent?filepath=biz/aQute/bnd/biz.aQute.bnd/3.5.0/biz.aQute.bnd-3.5.0.jar
-
-echo Downloading bnd 4.0.0-SNAPSHOT
-curl -o $BND4_PATH https://bndtools.ci.cloudbees.com/job/bnd.master/lastSuccessfulBuild/artifact/biz.aQute.bnd/generated/biz.aQute.bnd.jar
+BND3_PATH=$(pwd)/.travis/bnd-3.5.0.jar
+BND4_PATH=$(pwd)/.travis/bnd-4.0.0.201712272121-SNAPSHOTjar
 
 runtests R6 $BND3_PATH
-runtests R7 $BND4_PATH
+#runtests R7 $BND4_PATH
 
-echo =======
-echo SUCCESS
-echo
+echo TESTS PASSED
