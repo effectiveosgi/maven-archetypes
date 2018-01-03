@@ -44,6 +44,12 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
+      <groupId>com.effectiveosgi</groupId>
+      <artifactId>com.effectiveosgi.rt.inspect</artifactId>
+      <version>2.0.0-SNAPSHOT</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.configurator</artifactId>
       <version>0.0.1-SNAPSHOT</version>
@@ -93,7 +99,13 @@
     <dependency>
       <groupId>com.effectiveosgi</groupId>
       <artifactId>com.effectiveosgi.rt.config</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.effectiveosgi</groupId>
+      <artifactId>com.effectiveosgi.rt.inspect</artifactId>
+      <version>0.0.2</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -149,12 +161,6 @@
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.http.jetty</artifactId>
       <version>3.4.4</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.effectiveosgi</groupId>
-      <artifactId>com.effectiveosgi.rt.inspect</artifactId>
-      <version>0.0.1</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>

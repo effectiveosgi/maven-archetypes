@@ -35,6 +35,13 @@ ${HH} Knopflerfish
         bnd.identity;id=org.apache.felix.log,\
         bnd.identity;id=com.effectiveosgi.rt.config
 
+# This blacklist is used to obtain a stable resolve.
+# The packages should be supplied by the ConfigAdmin
+# and SCR implemementation bundles.
+-runblacklist: \
+    bnd.identity;id=org.osgi.service.cm,\
+    bnd.identity;id=org.osgi.service.component
+
 #if( $osgiLevel == "R7" )
 -runbundles: \
 	com.effectiveosgi.rt.config;version='[2.0.0,2.0.1)',\
@@ -46,7 +53,7 @@ ${HH} Knopflerfish
 	org.jline;version='[3.2.0,3.2.1)'
 #else
 -runbundles: \
-	com.effectiveosgi.rt.config;version='[1.0.0,1.0.1)',\
+	com.effectiveosgi.rt.config;version='[1.0.1,1.0.2)',\
 	org.apache.felix.configadmin;version='[1.8.14,1.8.15)',\
 	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
 	org.apache.felix.gogo.jline;version='[1.0.10,1.0.11)',\
