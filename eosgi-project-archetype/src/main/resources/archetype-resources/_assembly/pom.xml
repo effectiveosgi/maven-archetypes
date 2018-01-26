@@ -27,6 +27,26 @@
           </bndruns>
         </configuration>
       </plugin>
+
+      <!-- Uncomment to enable building a Docker image for the application
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.3.7</version>
+        <executions>
+          <execution>
+            <id>default</id>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <repository>${project.groupId}/application</repository>
+          <tag>${project.version}</tag>
+        </configuration>
+      </plugin>
+      -->
     </plugins>
   </build>
 
