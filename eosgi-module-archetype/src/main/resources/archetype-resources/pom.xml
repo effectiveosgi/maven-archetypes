@@ -10,6 +10,8 @@
 
   <properties>
 #if( !$hasParent )
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 #if( $osgiLevel == "R7" )
     <bnd.maven.version>4.0.0-SNAPSHOT</bnd.maven.version>
 #else
