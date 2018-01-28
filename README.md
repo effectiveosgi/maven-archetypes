@@ -18,6 +18,7 @@ Effective OSGi Maven Archetypes
     + [5.1. Refer to Bundle from Application](#51-refer-to-bundle-from-application)
     + [5.2. Resolve the Application](#52-resolve-the-application)
     + [5.3. Build and Run the Application](#53-build-and-run-the-application)
+  * [6. Export Docker Image](#6-export-docker-image)
 - [Licence](#licence)
 
 <!-- tocstop -->
@@ -219,6 +220,15 @@ Or using the standalone JAR file:
 
 Whichever way the application is executed, you should see that the `org.example.hello` bundle is included.
 
+### 6. Export Docker Image
+
+The generated project supports creating a Docker image for the assembled application; though this is disabled by default. To enable, open `_assembly/pom.xml` and uncomment the `<plugin>` section for the `dockerfile-maven-plugin`. Then rebuild the project with `mvn package`.
+
+The Docker image will have an image name of `<groupId>/application` (where `groupId` is whatever was selected in step 1) and a tag name derived from the version of the `_assembly` project. To change these values, edit the configuration section of the plugin. You may also wish to edit the `Dockerfile` found under `_assembly`.
+
+After the image is built, it can be run as follows:
+
+    docker run -it org.example/application:1.0-SNAPSHOT
 
 Licence
 -------
